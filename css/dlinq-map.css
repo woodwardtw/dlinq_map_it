@@ -8,3 +8,9 @@
 	font-weight: 700;
 	line-height: 1.2;
 }
+
+.bio p, .leaflet-popup-content p{
+	width:  150px;
+	margin:  0;
+	padding: 0;
+}
