@@ -31,24 +31,6 @@ function dlinq_mapit_load_scripts() {
 
 
 
-// Google Map API
-function dlinq_mapit_acf_google_map_api( $api ){
-    $api['key'] = 'AIzaSyDY6kr7PITxMEGtR-mRXtjM7AbIuPL-oXY';
-    return $api;
-}
-add_filter('acf/fields/google_map/api', 'dlinq_mapit_acf_google_map_api');
-
-function acf_to_rest_api($response, $post, $request) {
-    if (!function_exists('get_fields')) return $response;
- 
-    if (isset($post)) {
-        $acf = get_fields($post->id);
-        $response->data['acf'] = $acf;
-    }
-    return $response;
-}
-add_filter('rest_prepare_post', 'acf_to_rest_api', 10, 3);//if you leave it as post, it's just for posts
-
 
 
 
@@ -64,7 +46,6 @@ add_filter( 'theme_page_templates', 'dlinq_mapit_add_page_template_to_dropdown' 
 function dlinq_mapit_add_page_template_to_dropdown( $templates )
 {
    $templates[plugin_dir_path( __FILE__ ) . 'inc/map-display.php'] = __( 'Map Display', 'text-domain' );
-   $templates[plugin_dir_path( __FILE__ ) . 'inc/map-entry.php'] = __( 'Map Entry', 'text-domain' );
 
    return $templates;
 }
