@@ -9,8 +9,10 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1Ijoid29vZHdhcmR0dyIsImEiOiJjanNhaTVheGgwYTB4NDRwb25qN3lrbjkzIn0.Vi6Vk1OENLLYV1lWVNYSTw'
 }).addTo(map);
 
+//var WpJsonUrl = document.querySelector('link[rel="https://api.w.org/"]').href
 
-const wpJson = 'http://multisitetwo.local/mapping/wp-json/wp/v2/posts';
+const wpJson = document.querySelector('link[rel="https://api.w.org/"]').href + 'wp/v2/posts';
+console.log(wpJson);
 
 fetch(wpJson).then(response => response.json()).then(data => markerMaker(data));
 
