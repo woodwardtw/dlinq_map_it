@@ -34,49 +34,22 @@ function dlinq_mapit_load_scripts() {
 
 
 
-add_filter( 'theme_page_templates', 'dlinq_mapit_add_page_template_to_dropdown' );
 
-/**
-* Add page templates.
-*
-* @param  array  $templates  The list of page templates
-*
-* @return array  $templates  The modified list of page templates
-*/
-function dlinq_mapit_add_page_template_to_dropdown( $templates )
-{
-   $templates[plugin_dir_path( __FILE__ ) . 'inc/map-display.php'] = __( 'Map Display', 'text-domain' );
-
-   return $templates;
-}
-
-
-add_filter( 'template_include', 'dlinq_mapit_change_page_template', 99 );
-/**
- * Change the page template to the selected template on the dropdown
- * 
- * @param $template
- *
- * @return mixed
- */
-
-function dlinq_mapit_change_page_template($template)
-{
-    if (is_page()) {
-        $meta = get_post_meta(get_the_ID());
-
-        if (!empty($meta['_wp_page_template'][0]) && $meta['_wp_page_template'][0] != $template) {
-            $template = $meta['_wp_page_template'][0];
-        }
+function wpse255804_add_page_template ($templates) {
+    $templates['map-display.php'] = 'Map Display';
+    return $templates;
     }
+add_filter ('theme_page_templates', 'wpse255804_add_page_template');
 
+
+function wpse255804_redirect_page_template ($template) {
+    $post = get_post();
+    $page_template = get_post_meta( $post->ID, '_wp_page_template', true );
+    if ('map-display.php' == basename ($page_template))
+        $template = WP_PLUGIN_DIR . '/dlinq_map_it/inc/map-display.php';
     return $template;
-}
-
-
-//show custom fields
-add_filter( 'acf/settings/remove_wp_meta_box', '__return_false' );
-
+    }
+add_filter ('page_template', 'wpse255804_redirect_page_template');
 
 
 //put custom field in api
