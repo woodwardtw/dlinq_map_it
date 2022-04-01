@@ -1,0 +1,10 @@
+#map {
+	width:  100%;
+	height:  580px;
+}
+
+.popup-name {
+	font-size: 1.2em;
+	font-weight: 700;
+	line-height: 1.2;
+}
