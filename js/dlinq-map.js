@@ -25,12 +25,17 @@ function markerMaker(data){
       const long = item.lng;
       const marker = L.marker([lat, long]).addTo(map);
       let imgHtml = '';
+      let bioHtml = '';
       if(item.f_img){
         const imgUrl = item.f_img;
         imgHtml = `<img src="${imgUrl}" alt="Picture of the home town for ${title}" width="150px" height="auto">`;
       }
+      if(item.content.rendered){
+        const content = item.content.rendered;
+        bioHtml = `<div class="bio">${content}</div>`;
+      }
       if (lat != '' && long != ''){
-        marker.bindPopup(`<h2 class="popup-name">${title}</h2> ${imgHtml}`);
+        marker.bindPopup(`<h2 class="popup-name">${title}</h2> ${imgHtml}${bioHtml}`);
       }
   });
 }
