@@ -102,88 +102,6 @@ add_action('rest_api_init', function(){
   ); 
 });
 
-function street_get_post_meta_cb($object, $field_name, $request){
-        return get_post_meta($object['id'], $field_name, true); 
-}
-function street_update_post_meta_cb($value, $object, $field_name){
-  return update_post_meta($object['id'], $field_name, $value); 
-}
-add_action('rest_api_init', function(){
-  register_rest_field('post', 'street', 
-    array(
-    'get_callback' => 'street_get_post_meta_cb', 
-    'update_callback' => 'street_update_post_meta_cb', 
-    'schema' => null
-    )
-  ); 
-});
-
-function city_get_post_meta_cb($object, $field_name, $request){
-        return get_post_meta($object['id'], $field_name, true); 
-}
-function city_update_post_meta_cb($value, $object, $field_name){
-  return update_post_meta($object['id'], $field_name, $value); 
-}
-add_action('rest_api_init', function(){
-  register_rest_field('post', 'city', 
-    array(
-    'get_callback' => 'city_get_post_meta_cb', 
-    'update_callback' => 'city_update_post_meta_cb', 
-    'schema' => null
-    )
-  ); 
-});
-
-function state_get_post_meta_cb($object, $field_name, $request){
-        return get_post_meta($object['id'], $field_name, true); 
-}
-function state_update_post_meta_cb($value, $object, $field_name){
-  return update_post_meta($object['id'], $field_name, $value); 
-}
-add_action('rest_api_init', function(){
-  register_rest_field('post', 'state', 
-    array(
-    'get_callback' => 'state_get_post_meta_cb', 
-    'update_callback' => 'state_update_post_meta_cb', 
-    'schema' => null
-    )
-  ); 
-});
-
-
-function zip_get_post_meta_cb($object, $field_name, $request){
-        return get_post_meta($object['id'], $field_name, true); 
-}
-function zip_update_post_meta_cb($value, $object, $field_name){
-  return update_post_meta($object['id'], $field_name, $value); 
-}
-add_action('rest_api_init', function(){
-  register_rest_field('post', 'zip', 
-    array(
-    'get_callback' => 'zip_get_post_meta_cb', 
-    'update_callback' => 'zip_update_post_meta_cb', 
-    'schema' => null
-    )
-  ); 
-});
-
-
-
-function country_get_post_meta_cb($object, $field_name, $request){
-        return get_post_meta($object['id'], $field_name, true); 
-}
-function country_update_post_meta_cb($value, $object, $field_name){
-  return update_post_meta($object['id'], $field_name, $value); 
-}
-add_action('rest_api_init', function(){
-  register_rest_field('post', 'country', 
-    array(
-    'get_callback' => 'country_get_post_meta_cb', 
-    'update_callback' => 'country_update_post_meta_cb', 
-    'schema' => null
-    )
-  ); 
-});
 
 
 function fimg_get_post_meta_cb($object, $field_name, $request){
@@ -297,8 +215,8 @@ function dlinq_mapit_fetch($clean){
    );
    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
    //for debug only!
-   curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-   curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+   // curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+   // curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
    curl_setopt($curl,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
 

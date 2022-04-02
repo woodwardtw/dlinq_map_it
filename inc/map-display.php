@@ -16,7 +16,7 @@ endwhile;
 
 get_footer();?>
 
-<div class="embed-tools">
+<div class="embed-tools" id="embed-tools">
         <!--<button id="preview-embed">Preview</button>-->
         <button class="btn btn-primary" id="copy-embed-button">Copy Embed Code</button>
         <input id="lms-embed-code" value="<iframe frameborder='0' scrolling='no' width='100%' height='auto' src='<?php echo get_permalink();?>?show=article'></iframe>

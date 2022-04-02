@@ -1,4 +1,4 @@
-var map = L.map('map').setView([32.825512, -30.535592], 2.6);
+const map = L.map('map').setView([32.825512, -30.535592], 2.6);
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -9,9 +9,8 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1Ijoid29vZHdhcmR0dyIsImEiOiJjanNhaTVheGgwYTB4NDRwb25qN3lrbjkzIn0.Vi6Vk1OENLLYV1lWVNYSTw'
 }).addTo(map);
 
-//var WpJsonUrl = document.querySelector('link[rel="https://api.w.org/"]').href
 
-const wpJson = document.querySelector('link[rel="https://api.w.org/"]').href + 'wp/v2/posts';
+const wpJson = document.querySelector('link[rel="https://api.w.org/"]').href + 'wp/v2/posts?per_page=99';
 console.log(wpJson);
 
 fetch(wpJson).then(response => response.json()).then(data => markerMaker(data));
