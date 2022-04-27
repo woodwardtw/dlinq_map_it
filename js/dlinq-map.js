@@ -23,7 +23,7 @@ function markerMaker(data){
       const title = item.title.rendered;      
       const lat = item.lat;
       const long = item.lng;
-      const marker = markers.addLayer(L.marker([lat, long]).addTo(map));
+      const marker = L.marker([lat, long]).addTo(map);
       let imgHtml = '';
       let bioHtml = '';
       if(item.f_img){
@@ -37,6 +37,7 @@ function markerMaker(data){
       if (lat != '' && long != ''){
         marker.bindPopup(`<h2 class="popup-name">${title}</h2> ${imgHtml}${bioHtml}`);
       }
+      markers.addLayer(marker);
   });
     map.addLayer(markers);
 }
