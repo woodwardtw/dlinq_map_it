@@ -18,11 +18,12 @@ fetch(wpJson).then(response => response.json()).then(data => markerMaker(data));
 
 
 function markerMaker(data){
+    var markers = L.markerClusterGroup();
     data.forEach((item, index) => {
       const title = item.title.rendered;      
       const lat = item.lat;
       const long = item.lng;
-      const marker = L.marker([lat, long]).addTo(map);
+      const marker = markers.addLayer(L.marker([lat, long]).addTo(map));
       let imgHtml = '';
       let bioHtml = '';
       if(item.f_img){
@@ -37,4 +38,11 @@ function markerMaker(data){
         marker.bindPopup(`<h2 class="popup-name">${title}</h2> ${imgHtml}${bioHtml}`);
       }
   });
+    map.addLayer(markers);
 }
+
+
+// var markers = L.markerClusterGroup();
+// markers.addLayer(L.marker(getRandomLatLng(map)));
+// ... Add more layers ...
+// map.addLayer(markers);

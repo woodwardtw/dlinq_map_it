@@ -23,10 +23,13 @@ function dlinq_mapit_load_scripts() {
     $in_footer = true; 
       if ( is_page( 'map-display' ) ) {
          wp_enqueue_script('leaflet', 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0-beta.1/leaflet.js', '', '1', $in_footer);
+         wp_enqueue_script('leaflet-cluster', 'https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js', '', '1', $in_footer);
           wp_enqueue_script('dlinq-map-js', plugin_dir_url( __FILE__) . 'js/dlinq-map.js', 'leaflet', $version, $in_footer);           
        }
     wp_enqueue_style( 'dlinq-map-css', plugin_dir_url( __FILE__) . 'css/dlinq-map.css');
     wp_enqueue_style('leaflet', 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');
+    wp_enqueue_style('cluster-default-css', 'https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css');
+    wp_enqueue_style('cluster-marker-css', 'https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css');
 }
 
 
