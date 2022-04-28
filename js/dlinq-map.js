@@ -18,7 +18,12 @@ fetch(wpJson).then(response => response.json()).then(data => markerMaker(data));
 
 
 function markerMaker(data){
-    var markers = L.markerClusterGroup();
+    var markers = L.markerClusterGroup({
+      spiderfyOnMaxZoom: true,
+      showCoverageOnHover: false,
+      zoomToBoundsOnClick: false,
+      maxClusterRadius: 40,
+    });
     data.forEach((item, index) => {
       const title = item.title.rendered;      
       const lat = item.lat;
