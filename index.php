@@ -176,10 +176,10 @@ function dlinq_mapit_get_latlng($entry, $form){
       $state = 'state=' . rgar($entry, '2.4');      
       array_push($args, $state);
    }
-   if(rgar($entry, '2.5')){
-      $postalcode = 'postalcode=' . rgar($entry, '2.5');      
-      array_push($args, $postalcode);
-   }
+   // if(rgar($entry, '2.5')){
+   //    $postalcode = 'postalcode=' . rgar($entry, '2.5');      
+   //    array_push($args, $postalcode);
+   // }
    
    if(rgar($entry, '2.6')){
       if (rgar($entry, '2.6') == "United States"){
