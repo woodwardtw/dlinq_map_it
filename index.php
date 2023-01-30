@@ -141,11 +141,13 @@ add_action('save_post', 'dlinq_mapit_doublecheck_img', 10, 3);
 
 function dlinq_mapit_doublecheck_img(){
    global $post;
-   $post_id = $post->ID;
-   if(!get_post_meta( $post_id,'f_img', true)){
-      $img_url = get_the_post_thumbnail_url( $post_id, 'medium' );
-      update_post_meta( $post_id, 'f_img', $img_url, ''); 
-   }
+   if($post){
+        $post_id = $post->ID;
+       if(!get_post_meta( $post_id,'f_img', true)){
+          $img_url = get_the_post_thumbnail_url( $post_id, 'medium' );
+          update_post_meta( $post_id, 'f_img', $img_url, ''); 
+       }
+   }   
 
 }
 
@@ -153,11 +155,13 @@ add_action('save_post', 'dlinq_mapit_doublecheck_location', 10, 3);
 
 function dlinq_mapit_doublecheck_location(){
    global $post;
-   $post_id = $post->ID;
-   if(!get_post_meta( $post_id,'f_img', true)){
-      $img_url = get_the_post_thumbnail_url( $post_id, 'medium' );
-      update_post_meta( $post_id, 'f_img', $img_url, ''); 
-   }
+   if($post){
+        $post_id = $post->ID;
+       if(!get_post_meta( $post_id,'f_img', true)){
+          $img_url = get_the_post_thumbnail_url( $post_id, 'medium' );
+          update_post_meta( $post_id, 'f_img', $img_url, ''); 
+       }
+   }  
 
 }
 
