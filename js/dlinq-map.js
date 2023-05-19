@@ -9,9 +9,15 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1Ijoid29vZHdhcmR0dyIsImEiOiJjanNhaTVheGgwYTB4NDRwb25qN3lrbjkzIn0.Vi6Vk1OENLLYV1lWVNYSTw'
 }).addTo(map);
 
-
-const wpJson = document.querySelector('link[rel="https://api.w.org/"]').href + 'wp/v2/posts?per_page=99';
-console.log(wpJson);
+let catId = '';
+const mapBox = document.querySelector('#map');
+console.log(mapBox.dataset.cat);
+if(mapBox.dataset.cat)
+  {
+    catId = '&categories=' + mapBox.dataset.cat
+  }
+const wpJson = document.querySelector('link[rel="https://api.w.org/"]').href + 'wp/v2/posts?per_page=99' + catId;
+// console.log(wpJson);
 
 fetch(wpJson).then(response => response.json()).then(data => markerMaker(data));
 

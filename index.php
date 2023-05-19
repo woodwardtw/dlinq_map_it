@@ -33,10 +33,7 @@ function dlinq_mapit_load_scripts() {
 }
 
 
-
-
-
-
+//PAGE TEMPLATE
 
 function wpse255804_add_page_template ($templates) {
     $templates['map-display.php'] = 'Map Display';
@@ -92,9 +89,11 @@ add_action('rest_api_init', function(){
 function lng_get_post_meta_cb($object, $field_name, $request){
         return get_post_meta($object['id'], $field_name, true); 
 }
+
 function lng_update_post_meta_cb($value, $object, $field_name){
   return update_post_meta($object['id'], $field_name, $value); 
 }
+
 add_action('rest_api_init', function(){
   register_rest_field('post', 'lng', 
     array(
@@ -110,9 +109,11 @@ add_action('rest_api_init', function(){
 function fimg_get_post_meta_cb($object, $field_name, $request){
         return get_post_meta($object['id'], $field_name, true); 
 }
+
 function fimg_update_post_meta_cb($value, $object, $field_name){
   return update_post_meta($object['id'], $field_name, $value); 
 }
+
 add_action('rest_api_init', function(){
   register_rest_field('post', 'f_img', 
     array(
@@ -135,7 +136,6 @@ function dlinq_mapit_add_latlong($entry, $form) {
       dlinq_mapit_get_latlng($entry, $form);
   }
 }
-
 
 add_action('save_post', 'dlinq_mapit_doublecheck_img', 10, 3);
 
@@ -231,6 +231,17 @@ function dlinq_mapit_fetch($clean){
    curl_close($curl);
    return $resp;
 }
+
+
+//add category display to pages
+function page_tagcat_settings() {
+// Add tag metabox to page
+// register_taxonomy_for_object_type('post_tag', 'page');
+// Add category metabox to page
+register_taxonomy_for_object_type('category', 'page');
+}
+// Add to the admin_init hook of your theme functions.php file
+add_action( 'init', 'page_tagcat_settings' );
 
 
 //LOGGER -- like frogger but more useful
