@@ -11,7 +11,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 let catId = '';
 const mapBox = document.querySelector('#map');
-console.log(mapBox.dataset.cat);
+//console.log(mapBox.dataset.cat);
 if(mapBox.dataset.cat)
   {
     catId = '&categories=' + mapBox.dataset.cat
@@ -34,12 +34,12 @@ function markerMaker(data){
       const title = item.title.rendered;      
       const lat = item.lat;
       const long = item.lng;
-      const marker = L.marker([lat, long]).addTo(map);
+      const marker = L.marker([lat, long],{autoPan: true, keepInView: true}).addTo(map);
       let imgHtml = '';
       let bioHtml = '';
       if(item.f_img){
         const imgUrl = item.f_img;
-        imgHtml = `<img src="${imgUrl}" alt="Picture of the home town for ${title}" width="150px" height="auto">`;
+        imgHtml = `<img class="pic" src="${imgUrl}" alt="Picture of the home town for ${title}">`;
       }
       if(item.content.rendered){
         const content = item.content.rendered;
@@ -50,7 +50,7 @@ function markerMaker(data){
       }
       markers.addLayer(marker);
   });
-    map.addLayer(markers);
+    //map.addLayer(markers);
 }
 
 
